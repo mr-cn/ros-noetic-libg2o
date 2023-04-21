@@ -26,8 +26,14 @@
     
     # Tarball version (faster download)
     _dir="libg2o-release-release-noetic-libg2o"
-    source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/libg2o-release/archive/release/noetic/libg2o/${pkgver}.tar.gz")
-    sha256sums=('9a287e8582c5bce1da4469e6aac80347df7f0ae6e1626a39560d4df580db4763')
+    source=(
+	"${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/libg2o-release/archive/release/noetic/libg2o/${pkgver}.tar.gz"
+	fix-python-scripts.sh
+)
+    sha256sums=(
+	'9a287e8582c5bce1da4469e6aac80347df7f0ae6e1626a39560d4df580db4763'
+	'5528486d640d91136276edda2075aefc06f360e6297e556051bae57b9479aeda'
+)
 
     build() {
         # Use ROS environment variables
@@ -39,7 +45,7 @@
         cd ${srcdir}/build
 
         # Fix Python2/Python3 conflicts
-        /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
+        ${srcdir}/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
         # Build project
         cmake ${srcdir}/${_dir} \
