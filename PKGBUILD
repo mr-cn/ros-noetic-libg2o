@@ -1,37 +1,41 @@
 # Script generated with create_pkgbuild.py
-    # For more information: https://github.com/ros-noetic-arch/ros-build-tools-py3
-    pkgdesc="ROS - The libg2o library from http://openslam.org/g2o.html."
-    url='https://github.com/RainerKuemmerle/g2o'
+# For more information: https://github.com/ros-noetic-arch/ros-build-tools-py3
+pkgdesc="ROS - The libg2o library from http://openslam.org/g2o.html."
+url='https://github.com/RainerKuemmerle/g2o'
 
-    pkgname='ros-noetic-libg2o'
-    pkgver='2018.3.25'
-    arch=('any')
-    pkgrel=2
-    license=('BSD')
+pkgname='ros-noetic-libg2o'
+pkgver='2020.5.3'
+_pkgver_patch=1
 
-    ros_makedepends=()
-    makedepends=('cmake' 'ros-build-tools'
-    ${ros_makedepends[@]}
-    eigen
-  boost
-  mesa
-  suitesparse)
+arch=('any')
+pkgrel=1
+license=('BSD')
 
-    ros_depends=(ros-noetic-catkin)
-    depends=(${ros_depends[@]}
-    eigen
-  boost
-  mesa
-  suitesparse)
+ros_makedepends=()
+makedepends=('cmake' 'ros-build-tools'
+	${ros_makedepends[@]}
+	eigen
+	boost
+	mesa
+	suitesparse
+)
+
+ros_depends=(ros-noetic-catkin)
+depends=(${ros_depends[@]}
+	eigen
+	boost
+	mesa
+	suitesparse
+)
     
-    # Tarball version (faster download)
-    _dir="libg2o-release-release-noetic-libg2o"
-    source=(
-	"${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/libg2o-release/archive/release/noetic/libg2o/${pkgver}.tar.gz"
+# Tarball version (faster download)
+_dir="libg2o-release-release-noetic-libg2o-${pkgver}-${_pkgver_patch}"
+source=(
+	"${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/libg2o-release/archive/release/noetic/libg2o/${pkgver}-${_pkgver_patch}.tar.gz"
 	fix-python-scripts.sh
 )
-    sha256sums=(
-	'9a287e8582c5bce1da4469e6aac80347df7f0ae6e1626a39560d4df580db4763'
+sha256sums=(
+	'115c41cdce39bc27adf6522557b97749db1624a0692316486a855689b345dcb4'
 	'5528486d640d91136276edda2075aefc06f360e6297e556051bae57b9479aeda'
 )
 
